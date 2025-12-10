@@ -12,10 +12,15 @@ body {
 header {
 	background-color: #2d1b4e;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.left-group, .right-group {
+	display: flex;
 	align-items: center;
 	gap: 10px;
-	padding: 10px;
 }
 
 header p {
