@@ -27,9 +27,15 @@ function setup() {
 }
 
 function selectionDidChange(event) {
-  const episodeID = Number(event.target.value);
-  const episode = state.episodes.find((episode) => episode.id === episodeID);
-  makePageForEpisodes([episode]);
+  const value = event.target.value;
+
+  if (value === "") {
+    makePageForEpisodes(state.episodes);
+  } else {
+    const episodeID = Number(value);
+    const episode = state.episodes.find((episode) => episode.id === episodeID);
+    makePageForEpisodes([episode]);
+  }
 }
 
 function searchDidChange(event) {
