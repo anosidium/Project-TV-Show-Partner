@@ -11,8 +11,17 @@
 
   <body>
     <header>
-      <p id="search-results">All episodes</p>
-      <input type="search" id="search" name="search" />
+      <div class="left-group">
+        <label for="episode-select">Episode:</label>
+        <select name="episode-select" id="episode-select">
+          <option value="">All Episodes</option>
+        </select>
+      </div>
+
+      <div class="right-group">
+        <p id="search-results">All episodes</p>
+        <input type="search" id="search" name="search" />
+      </div>
     </header>
 
     <div id="root">

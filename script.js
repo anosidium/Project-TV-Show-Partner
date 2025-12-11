@@ -7,15 +7,40 @@ const searchResults = document.getElementById("search-results");
 
 // Initialize page on load: fetch episodes and render them
 function setup() {
+  const allEpisodes = state.episodes;
+
+  const options = allEpisodes.map((episode) => {
+    const option = document.createElement("option");
+    option.textContent = episode.name;
+    option.value = episode.id;
+    return option;
+  });
+
+  const selectControl = document.getElementById("episode-select");
+  const fragment = document.createDocumentFragment();
+  options.forEach((option) => fragment.appendChild(option));
+  selectControl.appendChild(fragment);
+  selectControl.addEventListener("change", selectionDidChange);
+
   const searchInput = document.getElementById("search");
   searchInput.addEventListener("input", searchDidChange);
 
-  const allEpisodes = state.episodes;
   makePageForEpisodes(allEpisodes);
 }
 
+function selectionDidChange(event) {
+  const value = event.target.value;
+
+  if (value === "") {
+    makePageForEpisodes(state.episodes);
+  } else {
+    const episodeID = Number(value);
+    const episode = state.episodes.find((episode) => episode.id === episodeID);
+    makePageForEpisodes([episode]);
+  }
+}
+
 function searchDidChange(event) {
-  console.log("Hello: ", event.target.value);
   state.searchText = event.target.value;
   render();
 }
