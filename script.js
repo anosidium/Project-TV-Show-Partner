@@ -187,10 +187,7 @@ function makePageForEpisodes(episodeList) {
 		if (episode.image && episode.image.medium) {
 			image.src = episode.image.medium;
 		} else {
-			image.src = `https://placehold.co/600x400/2d1b4e/d4c5f9?text=${episode.name.replace(
-				/ /g,
-				'+'
-			)}`;
+			image.src = `https://placehold.co/600x400/2d1b4e/d4c5f9?text=${episode.name.replace(/ /g,'+')}`;
 		}
 		image.alt = `${
 			episode.image && episode.image.medium
