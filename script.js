@@ -17,7 +17,9 @@ function setup() {
   });
 
   const selectControl = document.getElementById("episode-select");
-  selectControl.append(...options);
+  const fragment = document.createDocumentFragment();
+  options.forEach((option) => fragment.appendChild(option));
+  selectControl.appendChild(fragment);
   selectControl.addEventListener("change", selectionDidChange);
 
   const searchInput = document.getElementById("search");
