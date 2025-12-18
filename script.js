@@ -8,7 +8,7 @@ const state = {
   tvShows: [],
   episodes: [],
   searchText: "",
-  selectedId: "",
+  selectedEpisodeID: "",
   status: "idle",
   errorMessage: "",
 };
@@ -132,7 +132,7 @@ function populateEpisodeSelectControl(episodes) {
 function episodeSelectionDidChange(event) {
   const value = event.target.value;
   const total = state.episodes.length;
-  state.selectedId = value;
+  state.selectedEpisodeID = value;
 
   if (value === "") {
     searchResults.textContent = `Displaying all ${total} episodes`;
@@ -169,7 +169,7 @@ function render() {
 
   if (episodeSelectControl && episodeSelectControl.value !== "" && state.searchText !== "") {
     episodeSelectControl.value = "";
-    state.selectedId = "";
+    state.selectedEpisodeID = "";
   }
 
   if (searchText === "") {
