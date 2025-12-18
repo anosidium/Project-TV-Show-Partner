@@ -68,10 +68,14 @@ async function fetchTVShows() {
   const response = await fetch(url);
   const data = await response.json();
 
+  const alphabeticallyOrdered = data.sort((first, second) => {
+    return first.name.localeCompare(second.name, "en", { sensitivity: "base" });
+  });
+
   const episodes = await fetchEpisodes(82);
   state.episodes = episodes;
 
-  return data;
+  return alphabeticallyOrdered;
 }
 
 /*
