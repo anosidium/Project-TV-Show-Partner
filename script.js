@@ -35,7 +35,8 @@ async function setup() {
     const episodes = await fetchEpisodes();
     state.episodes = episodes;
     state.status = "loaded";
-    populateSelect(episodes);
+
+    populateEpisodeSelectControl(episodes);
     render();
   } catch (error) {
     state.status = "error";
@@ -69,7 +70,7 @@ async function fetchEpisodes() {
 
 // Populate the episode selection dropdown with fetched episodes
 // Keeps a default 'All Episodes' option at the top.
-function populateSelect(episodes) {
+function populateEpisodeSelectControl(episodes) {
   if (!episodeSelectControl) return;
   episodeSelectControl.innerHTML = "";
 
